@@ -1,0 +1,32 @@
+
+<product-form (newProductEvent)="addProduct($event)" [product]="productSelected"></product-form>
+<h2>Listado Productos </h2>
+@if (products.length> 0){
+  <table>
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>description</th>
+        <th>price</th>
+        <th>update</th>
+        <th>delete</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of products; track $index){
+        <tr>
+          <td>{{product.id}}</td>
+          <td>{{product.name}}</td>
+          <td>{{product.description}}</td>
+          <td>{{product.price}}</td>
+          <td><button (click)="UpdateProduct(product)">editar</button></td>
+          <td><button (click)="DeleteProduct(product.id)">eliminar</button></td>
+        </tr>
+      }
+    </tbody>
+  </table>
+} @else {
+  <div>No hay regitros en el sistema</div>
+}
